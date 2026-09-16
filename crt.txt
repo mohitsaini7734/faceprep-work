@@ -1,0 +1,605 @@
+db.students.insertMany([
+    {
+        rollNo: 101,
+        name: "Vasanth",
+        age: 21,
+        department: "CSE",
+        marks: 85,
+        skills: ["Java", "Python", "MongoDB"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 102,
+        name: "Rahul",
+        age: 22,
+        department: "ECE",
+        marks: 72,
+        skills: ["C", "Python", "Arduino"],
+        address: {
+            city: "Bangalore",
+            state: "Karnataka"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 103,
+        name: "Priya",
+        age: 20,
+        department: "CSE",
+        marks: 91,
+        skills: ["Java", "Python", "AI"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 104,
+        name: "Arjun",
+        age: 23,
+        department: "MECH",
+        marks: 68,
+        skills: ["AutoCAD", "C", "Java"],
+        address: {
+            city: "Hyderabad",
+            state: "Telangana"
+        }
+    },
+
+    {
+        rollNo: 105,
+        name: "Sneha",
+        age: 21,
+        department: "IT",
+        marks: 88,
+        skills: ["Python", "MongoDB", "HTML"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 106,
+        name: "Kiran",
+        age: 24,
+        department: "EEE",
+        marks: 65,
+        skills: ["C", "Arduino", "MATLAB"],
+        address: {
+            city: "Pune",
+            state: "Maharashtra"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 107,
+        name: "Anjali",
+        age: 20,
+        department: "CSE",
+        marks: 95,
+        skills: ["Java", "Python", "AI", "MongoDB"],
+        address: {
+            city: "Bangalore",
+            state: "Karnataka"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 108,
+        name: "Rohit",
+        age: 22,
+        department: "IT",
+        marks: 76,
+        skills: ["JavaScript", "HTML", "CSS"],
+        address: {
+            city: "Hyderabad",
+            state: "Telangana"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 109,
+        name: "Divya",
+        age: 21,
+        department: "CSE",
+        marks: 89,
+        skills: ["Python", "MongoDB", "Java"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 110,
+        name: "Suresh",
+        age: 23,
+        department: "CIVIL",
+        marks: 70,
+        skills: ["AutoCAD", "C", "STAAD"],
+        address: {
+            city: "Vijayawada",
+            state: "Andhra Pradesh"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 111,
+        name: "Meena",
+        age: 22,
+        department: "ECE",
+        marks: 82,
+        skills: ["Python", "Arduino", "IoT"],
+        address: {
+            city: "Bangalore",
+            state: "Karnataka"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 112,
+        name: "Akash",
+        age: 25,
+        department: "CSE",
+        marks: 60,
+        skills: ["C", "Java"],
+        address: {
+            city: "Hyderabad",
+            state: "Telangana"
+        },
+        scholarship: false
+    }
+])
+for (let i = 1; i <= 50; i++) {
+
+    db.products.insertOne({
+        productId: i,
+        productName: "Product " + i ,
+        category:
+            i % 5 === 0 ? "Laptop" :
+            i % 5 === 1 ? "Mobile" :
+            i % 5 === 2 ? "Headphones" :
+            i % 5 === 3 ? "Keyboard" :
+                          "Mouse",
+
+        brand:
+            i % 3 === 0 ? "Dell" :
+            i % 3 === 1 ? "Samsung" :
+                          "HP",
+
+        price: 1000 + (i * 500),
+
+        stock: 10 + i,
+
+        rating: 3 + ((i % 3) * 0.5),
+
+        inStock: i % 4 !== 0,
+
+        tags: [
+            "electronics",
+            i % 2 === 0 ? "featured" : "new"
+        ],
+
+        seller: {
+            sellerId: 1000 + i,
+            sellerName: "Seller " + i
+        },
+
+        createdAt: new Date()
+    });
+}
+
+
+
+
+Operators:
+db.students.insertMany([
+    {
+        rollNo: 101,
+        name: "Vasanth",
+        age: 21,
+        department: "CSE",
+        marks: 85,
+        skills: ["Java", "Python", "MongoDB"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 102,
+        name: "Rahul",
+        age: 22,
+        department: "ECE",
+        marks: 72,
+        skills: ["C", "Python", "Arduino"],
+        address: {
+            city: "Bangalore",
+            state: "Karnataka"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 103,
+        name: "Priya",
+        age: 20,
+        department: "CSE",
+        marks: 91,
+        skills: ["Java", "Python", "AI"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 104,
+        name: "Arjun",
+        age: 23,
+        department: "MECH",
+        marks: 68,
+        skills: ["AutoCAD", "C", "Java"],
+        address: {
+            city: "Hyderabad",
+            state: "Telangana"
+        }
+    },
+
+    {
+        rollNo: 105,
+        name: "Sneha",
+        age: 21,
+        department: "IT",
+        marks: 88,
+        skills: ["Python", "MongoDB", "HTML"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 106,
+        name: "Kiran",
+        age: 24,
+        department: "EEE",
+        marks: 65,
+        skills: ["C", "Arduino", "MATLAB"],
+        address: {
+            city: "Pune",
+            state: "Maharashtra"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 107,
+        name: "Anjali",
+        age: 20,
+        department: "CSE",
+        marks: 95,
+        skills: ["Java", "Python", "AI", "MongoDB"],
+        address: {
+            city: "Bangalore",
+            state: "Karnataka"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 108,
+        name: "Rohit",
+        age: 22,
+        department: "IT",
+        marks: 76,
+        skills: ["JavaScript", "HTML", "CSS"],
+        address: {
+            city: "Hyderabad",
+            state: "Telangana"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 109,
+        name: "Divya",
+        age: 21,
+        department: "CSE",
+        marks: 89,
+        skills: ["Python", "MongoDB", "Java"],
+        address: {
+            city: "Chennai",
+            state: "Tamil Nadu"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 110,
+        name: "Suresh",
+        age: 23,
+        department: "CIVIL",
+        marks: 70,
+        skills: ["AutoCAD", "C", "STAAD"],
+        address: {
+            city: "Vijayawada",
+            state: "Andhra Pradesh"
+        },
+        scholarship: false
+    },
+
+    {
+        rollNo: 111,
+        name: "Meena",
+        age: 22,
+        department: "ECE",
+        marks: 82,
+        skills: ["Python", "Arduino", "IoT"],
+        address: {
+            city: "Bangalore",
+            state: "Karnataka"
+        },
+        scholarship: true
+    },
+
+    {
+        rollNo: 112,
+        name: "Akash",
+        age: 25,
+        department: "CSE",
+        marks: 60,
+        skills: ["C", "Java"],
+        address: {
+            city: "Hyderabad",
+            state: "Telangana"
+        },
+        scholarship: false
+    }
+])
+LOGICAL OPERATORS
+$and       $or      $not       $nor
+1.Find students who belong to the CSE department AND have marks greater than 85.
+db.students.find({
+    $and: [
+        { department: "CSE" },
+        { marks: { $gt: 85 } }
+    ]
+})
+2.Find students who belong to CSE OR IT.
+db.students.find({
+    $or: [
+        { department: "CSE" },
+        { department: "IT" }
+    ]
+})
+3.Find students whose marks are NOT greater than 80.
+db.students.find({
+    marks: {
+        $not: {
+            $gt: 80
+        }
+    }
+})
+4.Find students who are neither from CSE nor from IT.
+db.students.find({
+    $nor: [
+        { department: "CSE" },
+        { department: "IT" }
+    ] })
+COMPARISON OPERATORS : 
+Operator	Meaning	Example
+$eq	Equal To	{marks: {$eq: 80}}
+$gt	Greater Than	{marks: {$gt: 80}}
+$lt	Less Than	{marks: {$lt: 70}}
+$gte	Greater Than or Equal	{marks: {$gte: 85}}
+$lte	Less Than or Equal	{marks: {$lte: 70}}
+$ne	Not Equal	{department: {$ne: "CSE"}}
+
+1.Find students whose department is exactly CSE.
+db.students.find({
+    department: {
+        $eq: "CSE"
+    }
+})
+2.Find students whose marks are greater than 80.
+db.students.find({
+    marks: {
+        $gt: 80
+    }
+})
+3.Find students whose marks are less than 70.
+db.students.find({
+    marks: {
+        $lt: 70
+    }
+})
+4.Find students whose marks are greater than or equal to 85.
+db.students.find({
+    marks: {
+        $gte: 85
+    }
+})
+5.Find students whose marks are less than or equal to 70.
+db.students.find({
+    marks: {
+        $lte: 70
+    }
+})
+6.Find students who are NOT from the CSE department.
+db.students.find({
+    department: {
+        $ne: "CSE"
+    }
+})
+
+ARRAY OPERATORS
+$in                    $nin                      $all                        $elemMatch            $size
+Operator	Purpose
+$in	Matches any value from a list
+$nin	Matches values not present in a list
+$all	Array must contain all specified values
+$elemMatch	Matches an array element satisfying conditions
+$size	Matches an array of a specific size
+
+1.Find students whose department is either CSE or IT.
+db.students.find({
+    department: {
+        $in: ["CSE", "IT"]
+    }})
+2.Find students whose department is neither CSE nor IT.
+db.students.find({
+    department: {
+        $nin: ["CSE", "IT"]
+    } })
+
+3.Find students who have BOTH Python AND MongoDB skills.
+db.students.find({
+    skills: {
+        $all: ["Python", "MongoDB"]
+    }
+})
+$elemMatch
+This is useful when an array contains objects.
+Let's first add an array of objects to one student:
+db.students.updateOne(
+    { rollNo: 101 },
+    {
+        $set: {
+            subjects: [
+                { name: "Java", marks: 90 },
+                { name: "MongoDB", marks: 88 },
+                { name: "Python", marks: 95 }
+            ]
+        }
+    }
+)
+4.Find students who have a subject named MongoDB with marks greater than 85.
+db.students.find({
+    subjects: {
+        $elemMatch: {
+            name: "MongoDB",
+            marks: { $gt: 85 }
+        }
+    }
+})
+5.Find students who have exactly 3 skills.
+db.students.find({
+    skills: {
+        $size: 3
+    }
+})
+
+PROJECTION OPERATORS
+Feature	Purpose
+$project	Select/reshape fields in aggregation
+Include using 1	Display selected fields
+Exclude using 0	Hide selected fields
+$slice	Return part of an array
+
+Projection means:
+Selecting which fields should be displayed in the result.
+1.Display only the student's name, department and marks using $project.
+db.students.aggregate([
+    {
+        $project: {
+            _id: 0,
+            name: 1,
+            department: 1,
+            marks: 1 } } ])
+Include Fields
+2.Display only name and marks.
+db.students.find(
+    {},
+    {
+        _id: 0,
+        name: 1,
+        marks: 1
+    }
+)
+Exclude Fields
+Similarly, we exclude fields using 0.
+3.Display all student information except address.
+db.students.find(
+    {},
+    {
+        address: 0
+    }
+)
+$slice
+$slice is used to return only a portion of an array in the result.
+4.Display only the first two skills of every student.
+db.students.find(
+    {},
+    {
+        name: 1,
+        skills: {
+            $slice: 2
+        }
+    })
+Element Operators:
+Operator	Purpose	Example
+$exists	Checks whether a field exists	{scholarship: {$exists: true}}
+$type	Checks BSON data type	{marks: {$type: "int"}}
+$regex	Performs string pattern matching	{name: {$regex: "^A"}}
+ 
+1.Find students whose scholarship field exists.
+db.students.find({
+    scholarship: {
+        $exists: true
+    }
+})
+2.Find students where scholarship does NOT exist:
+db.students.find({
+    scholarship: {
+        $exists: false
+    }
+})
+$type
+$type is used to check the BSON data type of a field.
+3.Find students whose marks field is stored as an integer.
+db.students.find({
+    marks: {
+        $type: "int"
+    }
+})
+$regex
+$regex is used for pattern matching in strings.
+4.Find students whose names start with the letter A.
+db.students.find({
+    name: {
+        $regex: "^A"
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
