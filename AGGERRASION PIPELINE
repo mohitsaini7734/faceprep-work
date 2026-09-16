@@ -1,0 +1,115 @@
+use ecomDB
+
+db.aggex.drop()
+
+const categories=["Electronics","Mobiles","Laptops","Home Appliances","Fashion","Books","Sports","Beauty","Grocery","Furniture"];
+const subCategories={
+"Electronics":["Headphones","Smartwatch","Camera","Speaker"],
+"Mobiles":["Android","iPhone","Feature Phone"],
+"Laptops":["Gaming","Business","Student"],
+"Home Appliances":["Refrigerator","Washing Machine","Microwave"],
+"Fashion":["Men","Women","Kids"],
+"Books":["Programming","Fiction","Education"],
+"Sports":["Cricket","Football","Fitness"],
+"Beauty":["Skincare","Haircare","Makeup"],
+"Grocery":["Snacks","Beverages","Staples"],
+"Furniture":["Chair","Table","Sofa"]
+};
+
+const brands=["Samsung","Apple","Sony","LG","HP","Dell","Lenovo","Nike","Adidas","Boat","OnePlus","AmazonBasics"];
+const cities=["Chennai","Coimbatore","Bangalore","Hyderabad","Mumbai","Delhi","Pune","Kochi","Kolkata","Ahmedabad"];
+const payments=["UPI","Credit Card","Debit Card","Net Banking","Cash on Delivery"];
+const statuses=["Delivered","Shipped","Processing","Cancelled","Returned"];
+const sellers=["RetailHub","TechWorld","MegaStore","DigitalMart","SmartShop","PrimeRetail"];
+const tags=["new","popular","trending","premium","budget","best-seller","discount","limited-stock"];
+
+let docs=[];
+
+for(let i=1;i<=5000;i++){
+    let category=categories[Math.floor(Math.random()*categories.length)];
+    let subCategory=subCategories[category][Math.floor(Math.random()*subCategories[category].length)];
+    let price=Math.floor(Math.random()*95000)+500;
+    let quantity=Math.floor(Math.random()*5)+1;
+    let discount=Math.floor(Math.random()*51);
+    let discountedPrice=Math.round(price-price*discount/100);
+    let stock=Math.floor(Math.random()*500);
+
+    docs.push({
+        productId:"PROD"+String(i).padStart(5,"0"),
+        productName:brands[Math.floor(Math.random()*brands.length)]+" "+subCategory+" "+i,
+        category,
+        subCategory,
+        brand:brands[Math.floor(Math.random()*brands.length)],
+        price,
+        discountPercentage:discount,
+        discountedPrice,
+        quantity,
+        revenue:discountedPrice*quantity,
+        rating:Number((Math.random()*4+1).toFixed(1)),
+        reviewCount:Math.floor(Math.random()*5000),
+        stock,
+        inStock:stock>0,
+        seller:{name:sellers[Math.floor(Math.random()*sellers.length)]},
+        customer:{
+            city:cities[Math.floor(Math.random()*cities.length)],
+            age:Math.floor(Math.random()*50)+18
+        },
+        payment:{method:payments[Math.floor(Math.random()*payments.length)]},
+        orderStatus:statuses[Math.floor(Math.random()*statuses.length)],
+        tags:[tags[Math.floor(Math.random()*tags.length)],tags[Math.floor(Math.random()*tags.length)]]
+    });
+
+    if(docs.length==500){
+        db.aggex.insertMany(docs);
+        docs=[];
+    }
+}
+
+if(docs.length) db.aggex.insertMany(docs);
+
+print("5000 documents inserted");
+
+db.aggex.aggregate([
+    {$match:{category:"Electronics"}},
+    {$sort:{price:-1}},
+    {$limit:3},
+    {$project:{_id:0,productName:1,price:1}}
+]);
+
+db.aggex.aggregate([
+    {$group:{
+        _id:"$category",
+        totalProducts:{$sum:1},
+        totalQuantity:{$sum:"$quantity"},
+        averagePrice:{$avg:"$price"}
+    }},
+    {$sort:{averagePrice:-1}}
+]);
+
+db.aggex.aggregate([
+    {$project:{
+        _id:0,
+        productName:1,
+        price:1,
+        quantity:1,
+        totalValue:{$multiply:["$price","$quantity"]}
+    }}
+]);
+
+db.aggex.aggregate([
+    {$unwind:"$tags"},
+    {$limit:10}
+]);
+
+db.aggex.aggregate([
+    {$count:"totalProducts"}
+]);
+
+db.aggex.aggregate([
+    {$group:{
+        _id:"$orderStatus",
+        totalOrders:{$sum:1}
+    }}
+]);
+
+print("Experiment completed");
